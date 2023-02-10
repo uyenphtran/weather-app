@@ -1,8 +1,10 @@
 /**
  * Author: Uyen Tran
  * 
- * Extracts weather information from API and display the weather by sending
- * information to HTML
+ * Extracts weather information from API using the user's geolocation and display the 
+ * weather by sending information to HTML
+ * 
+ * The temperature can be expressed by Celsius or Fahrenheit
  */
 
 const notifElement = document.querySelector(".notif");
@@ -16,16 +18,6 @@ const weather = {
         value : 24,
         unit : "celsius"
     },
-    /*
-    tempMax : {
-        value: 30,
-        unit : "celsius"
-    },
-    tempMin : {
-        value: 20,
-        unit : "celsius"
-    },
-    */
     desc : "Sunny",
     iconId : "clouds_sun_sunny_weather",
     city : "San Diego"
@@ -63,36 +55,5 @@ tempElement.addEventListener("click", function(){
     }
 });
 
-if ("geologcation" in navigator) {
-    navigator.geolocation.getCurrentPosition(setPosition, showError);
-}
-else {
-    notifElement.style.display = "block";
-    notifElement.innerHTML = "<p>Error: browser doesn't suport geolocation.</p>"
-}
-
-function setPosition(position) {
-    let lat = position.coords.latitude;
-    let long = position.coords.longitude;
-    getWeather(lat, long);
-}
-
-function showError(error) {
-    notifElement.style.display = "block";
-    notifElement.innerHTML = `<p>Error: ${error.message} </p>`
-}
-
-const KELVIN = 273;
-const key = "82005d27a116c2880c8f0fcb866998a0"
-
-function getWeather(latitude, longitude) {
-    let api = `http://api.openweatherapp.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
-    fetch(api).then(function(response) {
-        let data = response.json();
-        return data;
-    }).then(function(data) {
-
-    })
-}
 
 
