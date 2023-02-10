@@ -18,6 +18,16 @@ const weather = {
         value : 24,
         unit : "celsius"
     },
+    /*
+    tempMax : {
+        value : 24,
+        unit : "celsius"
+    },
+    tempMin : {
+        value : 24,
+        unit : "celsius"
+    },
+     */
     desc : "Sunny",
     iconId : "clouds_sun_sunny_weather",
     city : "San Diego"
